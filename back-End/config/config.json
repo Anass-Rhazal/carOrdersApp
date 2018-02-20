@@ -1,0 +1,4 @@
+{
+  "link" : "mongodb://localhost/loginDB",
+  "secretKey" : "Fy computing"
+}

@@ -1,0 +1,122 @@
+<div class="container-fluid"  >
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-5">
+                    <h2>Car  <b>Parts</b></h2>
+                </div>
+                
+                
+                <div class="col-sm-3">
+                    
+                    
+
+                <!-- 	<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>	 -->					
+                </div>
+                <div class="col-sm-3" >
+                    <a class="btn btn-warning" ng-click="launchOrders()" ><i class="material-icons">&#xE22B;</i> <span> launch orders </span></a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped table-hover"  ng-init="getAllOrders()">
+            <thead>
+                <tr>
+                    <!-- <th>
+                        <span class="custom-checkbox">
+                            <input type="checkbox" id="selectAll">
+                            <label for="selectAll"></label>
+                        </span>
+                    </th> -->
+                      
+                    <th>Model</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Done</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr  ng-repeat=" o in ords" >
+                    <!-- <td>
+                        <span class="custom-checkbox">
+                            <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                            <label for="checkboxkbox1"></label>
+                        </span>
+                    </td> -->
+                    <td >{{ o.carModel.name+'/'+o.carModel.year }}</td>						
+                    <td>{{o.type}}</td>
+                    <td>{{o.amount}}</td>
+                    <td>{{o.done}}</td>
+                    <td>
+                       <!--  <a href="#editEmployeeModal" class="edit"  ng-click="loadIncid(i,$index)" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Modifier">&#xE254;</i></a> -->
+                       <a   class="btn btn-danger"  ng-click="deleteOrder(o._id,$index)"  style="color: #FFF" ><i style="position: relative;top:5px;" class="material-icons">&#xE147;</i> <span> Delete an Order </span></a>
+                       
+                    </td>
+                </tr>
+               
+            </tbody>
+        </table>
+        <!-- <div class="clearfix">
+            <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+            <ul class="pagination">
+                <li class="page-item disabled"><a href="#">Previous</a></li>
+                <li class="page-item"><a href="#" class="page-link">1</a></li>
+                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                <li class="page-item"><a href="#" class="page-link">4</a></li>
+                <li class="page-item"><a href="#" class="page-link">5</a></li>
+                <li class="page-item"><a href="#" class="page-link">Next</a></li>
+            </ul>
+        </div> -->
+    </div>
+</div>
+<!-- Edit Modal HTML -->
+<div id="addEmployeeModal" class="modal fade"  ng-controller="orderCtrl" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">						
+                    <h4 class="modal-title">Add an order</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    
+                    <div   class="form-group">
+                        <label>Wheel</label>
+                        <select class="form-control" ng-model="nbrWheel">
+                            <option value="5">5</option>
+                            <option value="7">7</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                        </select>
+                    </div>
+                    <div   class="form-group">
+                        <label>Seat</label>
+                        <select class="form-control" ng-model="nbrSeat">
+                            <option value="5">5</option>
+                            <option value="7">7</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                        </select>
+                    </div>
+                    <div   class="form-group">
+                        <label>Mirror</label>
+                        <select class="form-control" ng-model="nbrMirror">
+                            <option value="5">5</option>
+                            <option value="7">7</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                        </select>
+                    </div>
+                    
+                                    
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Clear">
+                    <input type="submit" class="btn btn-success" data-dismiss="modal" ng-click="createUndoneOrders()" value="Add">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
